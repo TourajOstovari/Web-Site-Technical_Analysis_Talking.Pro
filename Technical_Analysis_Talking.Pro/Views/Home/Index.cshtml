@@ -1,0 +1,263 @@
+﻿@model System.Collections.Generic.IEnumerable<Technical_Analysis_Talking.Pro.App_Data.Posts_>
+@using Technical_Analysis_Talking.Pro.App_Data;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="publishing possible trading ideas and helps you make money with technical tools that I have...">
+    <meta name="keywords" content="FX,Forex,money market,templefx.com,templefx,Touraj Ostovari,Toraj Ostovari,Trading,fund manager,investment">
+    <meta name="generator" content="Responsive Site Designer 2.5.2425">
+    <title>Forex Analysis - Forex Trader - Fund manager - Portofilo Manager - Money Manager - FX - Touraj Ostovari</title>
+    <link rel="stylesheet" href="~/css/bootstrap4.min.css">
+    <link rel="stylesheet" href="~/css/wireframe-theme.min.css">
+    <script>document.createElement("picture");</script>
+    <script class="picturefill" async="async" src="~/js/picturefill.min.js"></script>
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento%7CQuintessential%7CRaleway:200,400,b,i%7CRambla:400,i%7CYellowtail">
+</head>
+
+<body>
+    <header class="row full-width">
+        <div class="col-xs-12 header-cover">
+            <div class="subgrid header-subgrid">
+                <nav class="row navbar bg-faded">
+                    <div class="col-xs-12">
+                        <a href="index.html" class="link-button-glyph btn menu-button hidden-md-up" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="glyph-for-button menu-icon"><i class="coffeecup-icons-menu7"></i></span><span class="link-button-text menu-text">Pure Forex</span></a><a href="#" class="link-button-glyph btn menu-button hidden-sm-down"><span class="glyph-for-button menu-icon"><i class="coffeecup-icons-cup"></i></span><span class="link-button-text menu-text">Pure Forex</span></a>
+                        <div class="container-fluid nav-container">
+                            <div class="container-fluid collapse navbar-toggleable-sm" id="main-nav">
+                                <a href="#Register" style="color:white; font-size:large; border-left-style:solid; border-left-width:thin; border-left-color:white;border-right-style:solid; border-right-width:thin; border-Right-color:white;">&nbsp; Register now <span style="color:darkturquoise;">FREE</span> &nbsp;</a> &nbsp;&emsp;
+                                <a class="link-text nav-link" href="@Url.Action("Archive","Home")" target="_parent" data-target="index.html#menu" title="Get all archive of my blogs">Technical Trading Ideas</a><a class="link-text nav-link" href="http://www.templefx.com" target="_blank">Forex Broker</a><a class="link-text nav-link" href="https://gocoin.com/" title="Help us to keep up this website ..."><span class="text-link-text-1">DONATE</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="row content-row">
+                    <div class="col-xs-12 intro-column">
+                        <h1 class="intro-header"><span class="bold">Senior Trading&nbsp;<br></span>Reliable Ideas</h1>
+                        <h3 class="intro-sub-header">
+                            <span>All Free for serious&nbsp;<br> real trading</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="row first-section" id="the-place">
+        <aside class="col-xs-12 col-md-4 push-md-8 pull-md-0 col-xl-3 push-xl-9 pull-xl-0">
+            <div class="subgrid">
+                <div class="row aside-row">
+                    <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+                        <div class="container-fluid aside-top-container">
+                            <span class="glyph aside-icon"><i class="coffeecup-icons-phone"></i></span>
+                            <span class="text-element text-1">True ECN / STP FOREX BROKER</span>
+                            <span class="text-element"></span>
+                        </div>
+                        <div class="container-fluid aside-bottom-container">
+                            <h6 class="aside-heading">
+                                <a title="www.Templefx.com" href="https://www.templefx.com/" target="_blank">Templefx</a>
+                            </h6>
+                            <p class="paragraph aside-p">
+                                <b>Algo Trading Accepted</b>
+                            </p>
+                            <p class="paragraph aside-p">
+                                <b>Free MT4 Trading Platform</b>
+                            </p>
+                            <p class="paragraph aside-p">
+                                <b>FCA License</b>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+                        <div class="container-fluid aside-top-container">
+                            <span class="glyph aside-icon"><i class="coffeecup-icons-newspaper"></i></span>
+                            <span class="text-element text-2">Central Banks Rates</span>
+                        </div>
+                        <div class="container-fluid aside-bottom-container">
+                            <h6 class="aside-heading">USD &gt; @if (ViewData["usd_rate"] != null) {@ViewData["usd_rate"].ToString()}%<br/></h6>
+                            <h6 class="aside-heading">EUR &gt; @if (ViewData["eur_rate"] != null) { @ViewData["eur_rate"].ToString()}%<br/></h6>
+                            <h6 class="aside-heading">GBP &gt; @if (ViewData["gbp_rate"]!= null) {@ViewData["gbp_rate"].ToString()}%<br/></h6>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+                        <div class="container-fluid aside-top-container">
+                            <span class="glyph aside-icon"><i class="coffeecup-icons-bubbles3"></i></span>
+                        </div>
+                        <div class="container-fluid aside-bottom-container">
+                            <h6 class="aside-heading">get in touch:</h6><a href="http://www.linkedin.com/in/touraj-ostovari-040b32156" target="_blank" class="social-image social-icons" title="Persoan LinkedIn"><img class="linkedin-icon" src="~/socialicons/webicon-linkedin.png" alt="Social Icon"></a><a href="http://about.me/touraj.ostovari" target="_blank" class="social-image social-icons"><img class="about_me-icon" src="~/socialicons/webicon-aboutme.png" alt="Social Icon"></a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 aside-column push-md-0 col-md-12 col-sm-6">
+                        <div class="container-fluid aside-top-container">
+                            <span class="text-element text-1">
+                                <a title="" href="" class="text-text-1">Advertising</a>
+                            </span>
+                        </div>
+                        <div class="container-fluid aside-bottom-container">
+                            <h6 class="aside-heading">COME ON OVER:</h6>
+                            <p class="paragraph aside-p">1362 Atlanta Street</p>
+                            <p class="paragraph aside-p">near ‘The Beach'</p>
+                            <p class="paragraph aside-p">Atlanta, GA 30339</p><a class="link-text map-link" href="#map-anchor" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="our-map" data-target="#our-map">FIND US ON THE MAP</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <text>
+            @{
+                try
+                {
+
+
+                Posts_[] tempe = Model.ToArray<Posts_>();
+                foreach (Posts_ item in tempe)
+                {
+                    if (item != null)
+                    {
+                        <div class="col-xs-12 push-md-0 col-md-8 pull-md-4 col-xl-9 offset-xl-0 push-xl-0 pull-xl-3 main-content-column float-lg-right float-md-right float-sm-right float-xl-right float-xs-right col-lg-8" id="news-copy-3">
+                            <p class="paragraph intro-p">
+                                <a title="" href="">@item.title</a>
+                            </p>
+                            <p class="paragraph main-para">
+                                Author: @item.authore &nbsp;Release Date: @item.date Symbol: @item.symbol<br>
+                            </p>
+                            <div class="responsive-picture article-image rounded img-fluid">
+                                <picture>
+                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                    <source srcset="~/images/@item.image" media="(min-width: 992px)"><!--[if IE 9]></video><![endif]-->
+                                    <img alt="Placeholder Picture" src="~/images/@item.image">
+                                </picture>
+                            </div>
+                            <p class="paragraph main-para" id="map-anchor-copy-3">
+                                @item.description<br>
+                            </p><a href="/home/Viewpost/?id=@item.Id"><button type="button" class="btn">Read More ...</button></a>
+                        </div>
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+                   
+                }
+            }
+        </text>
+    </main>
+    <div class="row map-row collapse" id="our-map">
+        <div class="col-xs-12">
+            <div class="html-element map-element">
+                <style>
+                    .embed-container {
+                        position: relative;
+                        padding-bottom: 56.25%;
+                        height: 0;
+                        overflow: hidden;
+                        max-width: 100%;
+                    }
+
+                        .embed-container iframe, .embed-container object, .embed-container embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                </style><div class='embed-container'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3376.2953460118656!2d-84.36380923996343!3d34.0230297332942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f50cacdd6a7eb9%3A0x500aee21d89b3103!2s1362+Atlanta+St%2C+Roswell%2C+GA+30075!5e0!3m2!1sen!2sus!4v1470430012321' width='1200' height='1250' frameborder='0' style='border:0' allowfullscreen></iframe></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 column-3">
+            <h6 class="vibe-heading">Using Trading Applications</h6>
+            <p class="paragraph vibe-p">
+                <span class="paragraph-text-1">Motivewave - TimingSolution</span><br>
+            </p>
+        </div>
+    </div>
+    <div class="row first-section last-section">
+        <div class="col-xs-12 col-lg col-md col-sm">
+            <h6 class="vibe-heading">
+                BE THE FIRST Person in the market WITH US<br>
+            </h6>
+            <p class="paragraph vibe-p" id="Register">
+                Catch the right direction, earn good profit. <b>and many others you need ...<br></b>
+            </p>
+            @using (Html.BeginForm("Subscribe","Home",FormMethod.Post)){
+            <div class="subgrid">
+                <span style="margin-left:45%;">
+                    @Html.ValidationMessage("Successfully")
+                </span>
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-6">
+                                <div class="container-fluid input-container-left">
+
+                                    <input value="" name="nick_name" type="text" class="form-control" required="required" title="What we should call you? (Nickname)">
+                                    <p class="paragraph form-p">Nickname?</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-lg-6">
+                                <div class="container-fluid input-container-right">
+                                    <input value="" name="email_address" type="email" class="form-control" title="E-mail Address">
+                                    <p class="paragraph form-p">Your email please.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input name="Submit" type="submit" value="Register ..." style="margin-left:45%; background-color:#706fd3; color: #f7f1e3; width:100px;" />
+                            </div>
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+    <div class="row row-3">
+        <div class="col-xs-12 column-4">
+            <footer class="container-fluid">
+                <div class="subgrid">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 custom-320-col-xs-11">
+                            <span class="glyph font-icon-2 page-item"><i class="coffeecup-icons-mailbox"></i></span><h6 class="heading-1"><code class="heading-text-1">Tornet656@gmail.com</code></h6>
+                        </div>
+                        <div class="col-xs-12 col-lg-12 col-md-8 col-sm-8 custom-320-col-xs-8">
+                            <span class="glyph font-icon-3"><i class="coffeecup-icons-coins"></i></span><span class="text-element text-5">
+                                <span class="text-text-4">Donate us (via bitcoin):<br><span class="text-text-5">112333312121</span></span><br>
+                            </span>
+                        </div>
+                        <div class="col-xs-12 subgrid-column-2 col-lg-12 col-md-12 col-sm-12 custom-320-col-xs-12">
+                            <span class="glyph font-icon-4 float-sm-left float-md-left hidden-sm-down"><i class="coffeecup-icons-design"></i></span><h6 class="heading-2 float-md-left float-sm-left">Design and Developed by <a title="" href=#" target="_blank">T</a>ouraj Ostovari </h6>
+                        </div>
+                        <div class="col-xs-12 col-lg-12 col-md-12">
+                            <span class="text-element">
+                                <span class="text-text-2">RISK WARNING</span><br>Trading in forex/CFDs involves significant risk and may not be suitable for all investors. Trading in the financial markets may lead to a loss of some or all of your original investment and as such you should not invest money that you cannot afford to lose. Trading on margin/leverage can work against you as well as for you. You should be fully aware of all risks involved in trading and should seek professional advice from an independent financial advisor if you have any doubts. Please read and make sure our ideas are not 100% suitable for any person, these ideas only helps you to trade better and combine with your trading risk managment and have better trading. With reading and using this website actually you agreed our risk rule and you do not have any claim for lost money or bad trades. <span class="text-text-3">JUST THIS WEBSITE HELPS YOU HAVE BETTER TRADING NOT MORE NOT LESS &amp; THIS WEBSITE WITH ANALYSIS IS PUBLISHING DOES NOT HAVE ANY RESPONSIBILITY FOR BAD TRADES.</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/outofview.js"></script>
+    <script src="~/js/tether.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('a[href*=\\#]:not([href=\\#])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

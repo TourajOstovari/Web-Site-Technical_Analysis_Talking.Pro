@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Responsive Site Designer 2.5.2425">
+    <title>Admin_Panel</title>
+    <link rel="stylesheet" href="~/css/bootstrap4.min.css">
+    <link rel="stylesheet" href="~/css/wireframe-theme.min.css">
+    <script>document.createElement("picture");</script>
+    <script class="picturefill" async="async" src="~/js/picturefill.min.js"></script>
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Average+Sans%7CQuattrocento%7CQuattrocento+Sans:400,i%7CQuintessential%7CRaleway:200,400,b,i%7CRambla:400,i%7CYellowtail">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-xs-12">
+            <h6>
+                Add new idea<br>
+            </h6>
+            <form action="@Url.Action("Insert_New","admin")" method="post" enctype="multipart/form-data">
+                @Html.ValidationMessage("saved")
+                <br />
+                <h6 class="heads">
+                    title:<br>
+                </h6><input value="" name="title" type="text" class="input-3" required="required" title="Enter your title here ..." width="500px">
+                <h6 class="heads">
+                    Description:<br>
+                </h6>
+                <textarea name="description" class="textarea-2" required="required" cols="55" rows="5">description of analysis at here ...</textarea>
+                <br />
+                <input value="" name="file" type="file" required="required" class="file-1">
+                <br />
+                <h6 class="heads">
+                    Symbol:<br>
+                    <input name="symbol" type="text" />
+                </h6><br />
+                <h6 class="heads">
+                    Authore:<br>
+                    <input name="authore" type="text" value="Mr.Touraj Ostovari" />
+                </h6><br />
+                <h6 class="heads">
+                    Date:<br>
+                    <input name="date" type="text" value="@DateTime.Now.ToShortDateString()" />
+                </h6><br />
+                <button type="submit" class="btn">... Publish the idea ...</button>
+                
+                </form>
+</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h6>
+                Delete the published idea<br>
+            </h6>
+            <form class="form-container">
+                <div class="container-fluid">
+                    @{
+                        Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer();
+                        System.Collections.Generic.IEnumerable<Technical_Analysis_Talking.Pro.App_Data.Posts_> enumerable = database_.Posts_Set;
+                        foreach (var item in enumerable)
+                        {
+                    <h6 class="heads" style="border-bottom-style:dashed; border-bottom-width:thin; border-bottom-color:darkorange;">
+                        @item.title  |  @item.date    |
+                        <a href="/admin/Delete_Post/@item.Id"><h6 class="heads" style="color:red;">delete</h6></a>
+                    </h6>
+                        }
+                    }
+                    </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+
+            <h6 class="alert-success">
+                <em class="heading-text-10">BANKS Interest rates</em><br>
+            </h6>
+            @using (Html.BeginForm("update_interest", "Admin"))
+            {
+                <h6>USD %:</h6><input value="" name="usd_rate" type="text" required="required">
+                <h6>GBP %:</h6>
+                <input value="" name="GBP_Rate" type="text" required="required">
+                <h6>EOB %:</h6><input value="" name="EUR_rate" type="text" required ="required">
+                <button type="submit" class="button-2 btn-outline-success" style="margin-left:15px;">Submit new intreset rates</button>
+                <button type="reset" class="button-3 btn-outline-danger" style="margin-left:15px;">Reset</button>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="@Url.Action("Sing_Out","Admin")"><button type="button" class="btn-danger">... Log out ...</button></a>
+        </div>
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/outofview.js"></script>
+    <script src="~/js/tether.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+</body>
+
+</html>

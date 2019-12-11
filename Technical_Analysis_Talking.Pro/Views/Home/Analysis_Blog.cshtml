@@ -1,0 +1,135 @@
+﻿
+<!DOCTYPE html>
+<html>
+@using Technical_Analysis_Talking.Pro
+@model PagedList.IPagedList<Technical_Analysis_Talking.Pro.App_Data.Posts_>
+@using PagedList.Mvc
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Responsive Site Designer 2.5.2425">
+    <title>Archive of my analyst || FOREX Trader || Forex Analysis</title>
+    <link rel="stylesheet" href="~/css/bootstrap4.min.css">
+    <link rel="stylesheet" href="~/css/wireframe-theme.min.css">
+    <script>document.createElement("picture");</script>
+    <script class="picturefill" async="async" src="~/js/picturefill.min.js"></script>
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Average+Sans%7CQuattrocento%7CQuattrocento+Sans:400,i%7CQuintessential%7CRaleway:200,400,b,i%7CRambla:400,i%7CYellowtail">
+</head>
+
+<body>
+    <div class="row row-1">
+        <div class="col-xs-12 col-md-11 col-sm-12 custom-320-col-xs-12 col-lg-10">
+            <h6 class="heading-3">
+                <a title="" href="" class="heading-text-2">Welcome To My Technical Analysis Blog</a>
+            </h6>
+        </div>
+        <div class="col-xs-7 col-lg-2 custom-320-col-xs-6">
+            <h6>
+                <a title="With your donates this website would be continue and useful" href=""><code>Donate us</code></a>
+            </h6>
+            <h6>
+                <code><a title="" href="@Url.Action("Index", "Home")">Home Page</a></code>
+            </h6>
+        </div>
+    </div>
+    @*<div class="row">
+            <div class="col-xs-4">
+                <h6>
+                    <span class="heading-text-7">Categories (Symbols):</span><br>
+                </h6>
+            </div>
+            <div class="col-xs-12">
+                <a class="link-text text-info" href="#" target="_blank">
+                    @{
+
+                        Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer();
+                        Technical_Analysis_Talking.Pro.App_Data.Posts_[] posts_s = database_.Posts_Set.ToArray();
+                        foreach (Technical_Analysis_Talking.Pro.App_Data.Posts_ item in posts_s)
+                        {
+                        <em>@item.symbol.Trim().ToString()</em>
+
+                        }
+                    }
+
+                </a>
+            </div>
+        </div>*@
+    <div class="row">
+        @{
+            foreach (Technical_Analysis_Talking.Pro.App_Data.Posts_ item in Model)
+            {
+                <div class="col-xs-12">
+                    <div class="subgrid">
+                        <div class="row">
+                            <div class="col-xs-12 subgrid-column-1">
+                                <h6>
+                                    <a title="Title: alt" href="" target="_blank" class="heading-text-5"><em class="heading-text-6">@item.title: </em></a>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="row subgrid-row-1">
+                            <div class="col-xs-12 subgrid-column-3 col-lg-12">
+                                <div class="responsive-picture picture-1 img-thumbnail">
+                                    <picture>
+                                        <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                        @*<source srcset="~/images/EURUSD%20-%20Primary%20Analysis%20-%20Feb-14%201336%20PM%20%281%20day%29.png">*@
+                                        <source srcset="~/images/@item.image" media="(min-width: 992px)">
+                                        <source srcset="~/images/@item.image" media="(min-width: 768px)">
+                                        <source srcset="~/images/@item.image" media="(min-width: 576px)">
+                                        <source srcset="~/images/@item.image" media="(min-width: 320px)"><!--[if IE 9]></video><![endif]-->
+                                        <img alt="... Analysis Photo Not Found ..." src="~/images/@item.image">
+                                    </picture>
+                                </div>
+                            </div>
+                            <div class="col-xs-11 custom-320-col-xs-6 col-sm-6 col-lg-4">
+                                <h6 class="heading-4">
+                                    <a title="" href=""><span class="heading-text-4">Date: </span><em>@item.date</em></a>
+                                </h6>
+                            </div>
+                            <div class="col-xs-12 col-lg-7">
+                                <h6><a title="" href="" class="heading-text-3">Authore:</a>&nbsp;@item.authore</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 pull-lg-0 col-lg-3 push-lg-9">
+                                <a href="@String.Concat(Url.Action("Viewpost","Home"),@"/?id=",item.Id)"><button type="button" class="btn btn-danger bg-info">More ...</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+    <ul class="pagination pagination-lg"  style="margin-left:30em;">
+        Page 
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+            <span style="margin-left:20px"><a href="@string.Concat(Url.Action("Archive","Home"),"?Page=",i) ">@i</a></span>
+            }
+    </ul>
+    <div class="row">
+        <div class="col-xs-12">
+            <footer class="container-fluid">
+                <div class="placeholder-hero hero-unit-1">
+                    <h1 class="hero-header">
+                        <span class="hero-header-text-1">Technical Forex Market News. BE FIRST IN MARKET WITH US... &nbsp;<span class="hero-header-text-2">BY Touraj Ostovari</span></span>
+                    </h1>
+                    <p class="hero-tagline hero-tagline-1">
+                        Designed &amp; Developed by <span class="hero-tagline-text-1">Mr. Touraj Ostovari</span><br>
+                    </p>
+                    <p class="hero-tagline hero-tagline-1">
+                        <span class="hero-tagline-text-2">RISK WARNING</span><br>Trading in forex/CFDs involves significant risk and may not be suitable for all investors. Trading in the financial markets may lead to a loss of some or all of your original investment and as such you should not invest money that you cannot afford to lose. Trading on margin/leverage can work against you as well as for you. You should be fully aware of all risks involved in trading and should seek professional advice from an independent financial advisor if you have any doubts. Please read and make sure our ideas are not 100% suitable for any person, these ideas only helps you to trade better and combine with your trading risk managment and have better trading. With reading and using this website actually you agreed our risk rule and you do not have any claim for lost money or bad trades.<span class="hero-tagline-text-4"> <span class="hero-tagline-text-3">JUST THIS WEBSITE HELPS YOU HAVE BETTER TRADING NOT MORE NOT LESS &amp; THIS WEBSITE WITH ANALYSIS IS PUBLISHING DOES NOT HAVE ANY RESPONSIBILITY FOR BAD TRADES.</span></span><br>
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/outofview.js"></script>
+    <script src="~/js/tether.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+</body>
+
+</html>
