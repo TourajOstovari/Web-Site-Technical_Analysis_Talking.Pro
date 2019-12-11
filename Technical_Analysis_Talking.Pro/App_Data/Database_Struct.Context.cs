@@ -6,19 +6,19 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace Technical_Analysis_Talking.Pro.App_Data
-{
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+namespace Technical_Analysis_Talking.Pro.App_Data
+{
+
     
     public partial class Database_StructContainer : DbContext
     {
         public Database_StructContainer()
             : base("name=Database_StructContainer")
         {
-            System.Data.Entity.Database.SetInitializer(new System.Data.Entity.CreateDatabaseIfNotExists<Database_StructContainer>());
+            System.Data.Entity.Database.SetInitializer(new FirstTimeInitializer());
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -30,5 +30,15 @@ namespace Technical_Analysis_Talking.Pro.App_Data
         public virtual DbSet<Users_> Users_Set { get; set; }
         public virtual DbSet<news_subscribe> news_subscribe { get; set; }
         public virtual DbSet<Interest_rate> Interest_rate { get; set; }
+    }
+
+    public class FirstTimeInitializer : CreateDatabaseIfNotExists<Database_StructContainer>
+    {
+        protected override void Seed(Database_StructContainer context)
+        {
+            base.Seed(context);
+            context.Users_Set.Add(new Users_() {  username="Touraj", password="123456"});
+            
+        }
     }
 }

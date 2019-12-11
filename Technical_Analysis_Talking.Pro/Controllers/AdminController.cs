@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 namespace Technical_Analysis_Talking.Pro.Controllers
 {
     public class AdminController : Controller
@@ -28,6 +29,7 @@ namespace Technical_Analysis_Talking.Pro.Controllers
             var status = (bool)obj.Success;
             ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
             */
+
 
             if (result != null)
                 if (result.username == users.username && result.password == users.password) { ViewData["loging_State"] = "true"; return View("Admin_panel"); }
