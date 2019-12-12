@@ -19,6 +19,7 @@ namespace Technical_Analysis_Talking.Pro.App_Data
             : base("name=Database_StructContainer")
         {
             System.Data.Entity.Database.SetInitializer(new FirstTimeInitializer());
+            
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -38,6 +39,7 @@ namespace Technical_Analysis_Talking.Pro.App_Data
         {
             base.Seed(context);
             context.Users_Set.Add(new Users_() {  username="Touraj", password="123456"});
+            context.SaveChanges();
             
         }
     }

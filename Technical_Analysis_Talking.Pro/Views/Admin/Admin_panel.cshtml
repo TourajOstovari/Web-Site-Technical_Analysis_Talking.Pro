@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
-
+@model PagedList.IPagedList<Technical_Analysis_Talking.Pro.App_Data.Posts_>
+@using PagedList.Mvc
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,9 +47,9 @@
                     <input name="date" type="text" value="@DateTime.Now.ToShortDateString()" />
                 </h6><br />
                 <button type="submit" class="btn">... Publish the idea ...</button>
-                
-                </form>
-</div>
+
+            </form>
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -58,17 +59,22 @@
             <form class="form-container">
                 <div class="container-fluid">
                     @{
-                        Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer();
-                        System.Collections.Generic.IEnumerable<Technical_Analysis_Talking.Pro.App_Data.Posts_> enumerable = database_.Posts_Set;
-                        foreach (var item in enumerable)
+                        foreach (var item in Model)
                         {
-                    <h6 class="heads" style="border-bottom-style:dashed; border-bottom-width:thin; border-bottom-color:darkorange;">
-                        @item.title  |  @item.date    |
-                        <a href="/admin/Delete_Post/@item.Id"><h6 class="heads" style="color:red;">delete</h6></a>
-                    </h6>
+                            <h6 class="heads" style="border-bottom-style:dashed; border-bottom-width:thin; border-bottom-color:darkorange;">
+                                @item.title  |  @item.date    |
+                                <a href="/admin/Delete_Post/@item.Id"><h6 class="heads" style="color:red;">delete</h6></a>
+                            </h6>
                         }
                     }
-                    </div>
+                    <ul class="pagination pagination-lg" style="margin-left:30em;">
+                        Page
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            <span style="margin-left:20px"><a href="@string.Concat(Url.Action("Admin_Panel","admin"),"?Page=",i) ">@i</a></span>
+                        }
+                    </ul>
+                </div>
 
             </form>
         </div>
@@ -84,7 +90,7 @@
                 <h6>USD %:</h6><input value="" name="usd_rate" type="text" required="required">
                 <h6>GBP %:</h6>
                 <input value="" name="GBP_Rate" type="text" required="required">
-                <h6>EOB %:</h6><input value="" name="EUR_rate" type="text" required ="required">
+                <h6>EOB %:</h6><input value="" name="EUR_rate" type="text" required="required">
                 <button type="submit" class="button-2 btn-outline-success" style="margin-left:15px;">Submit new intreset rates</button>
                 <button type="reset" class="button-3 btn-outline-danger" style="margin-left:15px;">Reset</button>
             }

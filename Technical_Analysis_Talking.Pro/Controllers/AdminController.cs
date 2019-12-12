@@ -30,34 +30,38 @@ namespace Technical_Analysis_Talking.Pro.Controllers
             ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
             */
 
-
+            App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
             if (result != null)
-                if (result.username == users.username && result.password == users.password) { ViewData["loging_State"] = "true"; return View("Admin_panel"); }
+                if (result.username == users.username && result.password == users.password) { result.last_login_time = System.DateTime.Now.ToShortDateString(); database_.SaveChanges();  ViewData["loging_State"] = "true"; return View("Admin_panel",posts.ToPagedList(1,10)); }
             return View("login");
         }
 
-        public ActionResult Admin_Panel()
+        public ActionResult Admin_Panel(int page)
         {
-            if (ViewData["loging_State"] != null)
-                if (ViewData["loging_State"].ToString() == "true")
+            Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+            App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
+            ViewData["pager"] = page;
+            if (ViewData["loging_State"] != "")
                 {
-                    return View("Admin_panel");
+                    return View("Admin_panel",posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
                 }
             return View("login");
         }
         [HttpPost]
         public ActionResult Insert_New(HttpPostedFileBase file, App_Data.Posts_ posts_)
         {
+            Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+            App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
             if (ViewData["loging_State"] != "")
                 {
-                    App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+                    //App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
                     file.SaveAs(Server.MapPath(@"~/images/" + file.FileName));
                     posts_.image = file.FileName;
                     database_.Posts_Set.Add(posts_);
                     database_.SaveChanges();
                     ModelState.AddModelError("Saved", "Saved Succesfully ...");
                 }
-            return View("Admin_panel");
+            return View("Admin_panel", posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
         }
         public class CaptchaResponse
         {
@@ -81,7 +85,8 @@ namespace Technical_Analysis_Talking.Pro.Controllers
                 database_.SaveChanges();
             }
             database_.SaveChanges();
-            return View("admin_panel");
+            App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
+            return View("admin_panel", posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
         }
         public ActionResult Sign_Out()
         {
@@ -90,17 +95,18 @@ namespace Technical_Analysis_Talking.Pro.Controllers
         }
         public ActionResult Delete_Post()
         {
-            if(ViewData["loging_State"] != "")
+            App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+            if (ViewData["loging_State"] != "")
             if(RouteData.Values["id"] != null)
             {
-                    App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+
                     int ids = int.Parse(RouteData.Values["id"].ToString());
                     App_Data.Posts_ posts = database_.Posts_Set.FirstOrDefault((s) => s.Id == ids);
                     database_.Posts_Set.Remove(posts);
                     database_.SaveChanges();
             }
-            
-            return View("admin_panel");
+            App_Data.Posts_[] post_s = database_.Posts_Set.ToArray();
+            return View("admin_panel", post_s.ToPagedList(1, 10));
         }
 }
 }
