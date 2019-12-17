@@ -170,7 +170,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\adminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="App_Data\Database_Struct.Designer.cs">
@@ -226,6 +227,9 @@
     <Content Include="App_Data\Database_Struct.edmx.diagram">
       <DependentUpon>Database_Struct.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\admin\Admin_panel.cshtml" />
+    <Content Include="Areas\Admin\Views\admin\Login.cshtml" />
     <None Include="js\jquery-3.3.1.intellisense.js" />
     <Content Include="images\advocados.jpeg" />
     <Content Include="images\benjamin-child-17946-unsplash.jpg" />
@@ -319,8 +323,6 @@
     <Content Include="js\jquery.min.map" />
     <Content Include="js\jquery.slim.min.map" />
     <Content Include="Views\Home\Analysis_Blog.cshtml" />
-    <Content Include="Views\Admin\Admin_panel.cshtml" />
-    <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Home\viewpost.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -335,6 +337,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using PagedList;
-namespace Technical_Analysis_Talking.Pro.Controllers
+﻿
+namespace Technical_Analysis_Talking.Pro.Areas.Admin.Controllers
 {
+    using Newtonsoft.Json;
+    using PagedList;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
     public class AdminController : Controller
     {
         // GET: Admin
@@ -32,7 +33,7 @@ namespace Technical_Analysis_Talking.Pro.Controllers
 
             App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
             if (result != null)
-                if (result.username == users.username && result.password == users.password) { result.last_login_time = System.DateTime.Now.ToShortDateString(); database_.SaveChanges();  ViewData["loging_State"] = "true"; return View("Admin_panel",posts.ToPagedList(1,10)); }
+                if (result.username == users.username && result.password == users.password) { result.last_login_time = System.DateTime.Now.ToShortDateString(); database_.SaveChanges(); ViewData["loging_State"] = "true"; return View("Admin_panel", posts.ToPagedList(1, 10)); }
             return View("login");
         }
 
@@ -42,9 +43,9 @@ namespace Technical_Analysis_Talking.Pro.Controllers
             App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
             ViewData["pager"] = page;
             if (ViewData["loging_State"] != "")
-                {
-                    return View("Admin_panel",posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
-                }
+            {
+                return View("Admin_panel", posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
+            }
             return View("login");
         }
         [HttpPost]
@@ -53,14 +54,14 @@ namespace Technical_Analysis_Talking.Pro.Controllers
             Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
             App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
             if (ViewData["loging_State"] != "")
-                {
-                    //App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
-                    file.SaveAs(Server.MapPath(@"~/images/" + file.FileName));
-                    posts_.image = file.FileName;
-                    database_.Posts_Set.Add(posts_);
-                    database_.SaveChanges();
-                    ModelState.AddModelError("Saved", "Saved Succesfully ...");
-                }
+            {
+                //App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+                file.SaveAs(Server.MapPath(@"~/images/" + file.FileName));
+                posts_.image = file.FileName;
+                database_.Posts_Set.Add(posts_);
+                database_.SaveChanges();
+                ModelState.AddModelError("Saved", "Saved Succesfully ...");
+            }
             return View("Admin_panel", posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
         }
         public class CaptchaResponse
@@ -71,9 +72,11 @@ namespace Technical_Analysis_Talking.Pro.Controllers
             [JsonProperty("error-codes")]
             public List<string> ErrorMessage { get; set; }
         }
-        public ActionResult update_interest(App_Data.Interest_rate rates){
+        public ActionResult update_interest(App_Data.Interest_rate rates)
+        {
             App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
-            if (database_.Interest_rate.Count<App_Data.Interest_rate>() == 0) {
+            if (database_.Interest_rate.Count<App_Data.Interest_rate>() == 0)
+            {
                 database_.Interest_rate.Add(rates);
             }
             else
@@ -97,16 +100,16 @@ namespace Technical_Analysis_Talking.Pro.Controllers
         {
             App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
             if (ViewData["loging_State"] != "")
-            if(RouteData.Values["id"] != null)
-            {
+                if (RouteData.Values["id"] != null)
+                {
 
                     int ids = int.Parse(RouteData.Values["id"].ToString());
                     App_Data.Posts_ posts = database_.Posts_Set.FirstOrDefault((s) => s.Id == ids);
                     database_.Posts_Set.Remove(posts);
                     database_.SaveChanges();
-            }
+                }
             App_Data.Posts_[] post_s = database_.Posts_Set.ToArray();
             return View("admin_panel", post_s.ToPagedList(1, 10));
         }
-}
+    }
 }
