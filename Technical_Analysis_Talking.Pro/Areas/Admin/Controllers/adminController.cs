@@ -12,6 +12,13 @@ namespace Technical_Analysis_Talking.Pro.Areas.Admin.Controllers
         // GET: Admin
         public ActionResult Login()
         {
+            if (ViewData["loging_State"] != null)
+            {
+                Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+                App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
+                return View("admin_panel", posts.ToPagedList(1, 10));
+            }
+                
             return View();
         }
         [HttpPost]
@@ -37,7 +44,7 @@ namespace Technical_Analysis_Talking.Pro.Areas.Admin.Controllers
             return View("login");
         }
 
-        public ActionResult Admin_Panel(int page)
+        public ActionResult Admin_Panel(int page = 1)
         {
             Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
             App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
@@ -62,7 +69,7 @@ namespace Technical_Analysis_Talking.Pro.Areas.Admin.Controllers
                 database_.SaveChanges();
                 ModelState.AddModelError("Saved", "Saved Succesfully ...");
             }
-            return View("Admin_panel", posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
+            return View("Admin_panel", posts.ToPagedList(1, 10));
         }
         public class CaptchaResponse
         {
@@ -89,7 +96,7 @@ namespace Technical_Analysis_Talking.Pro.Areas.Admin.Controllers
             }
             database_.SaveChanges();
             App_Data.Posts_[] posts = database_.Posts_Set.ToArray();
-            return View("admin_panel", posts.ToPagedList(int.Parse(ViewData["pager"].ToString()), 10));
+            return View("admin_panel", posts.ToPagedList(1, 10));
         }
         public ActionResult Sign_Out()
         {
@@ -110,6 +117,19 @@ namespace Technical_Analysis_Talking.Pro.Areas.Admin.Controllers
                 }
             App_Data.Posts_[] post_s = database_.Posts_Set.ToArray();
             return View("admin_panel", post_s.ToPagedList(1, 10));
+        }
+
+
+        
+
+        public ActionResult change_sec(Technical_Analysis_Talking.Pro.App_Data.Users_ users)
+        {
+            Technical_Analysis_Talking.Pro.App_Data.Database_StructContainer database_ = new App_Data.Database_StructContainer();
+            App_Data.Users_ result = database_.Users_Set.First();
+            result.username = users.username;
+            result.password = users.password;
+            database_.SaveChanges();
+            return View("login");
         }
     }
 }

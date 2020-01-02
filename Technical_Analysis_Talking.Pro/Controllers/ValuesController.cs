@@ -10,9 +10,11 @@ namespace Technical_Analysis_Talking.Pro.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public  dynamic Get()
         {
-            return new string[] { "Please inform us which news idea you want by ?id= get method parameter" };
+            App_Data.Database_StructContainer database = new App_Data.Database_StructContainer();
+
+            return  database.Posts_Set;
         }
 
         // GET api/values/5

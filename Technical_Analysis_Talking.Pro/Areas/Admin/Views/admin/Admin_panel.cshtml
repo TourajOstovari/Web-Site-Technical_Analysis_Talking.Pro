@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Responsive Site Designer 2.5.2425">
-    <title>Admin_Panel</title>
+    <title>Admin Panel Management</title>
     <link rel="stylesheet" href="~/css/bootstrap4.min.css">
     <link rel="stylesheet" href="~/css/wireframe-theme.min.css">
     <script>document.createElement("picture");</script>
@@ -71,6 +71,7 @@
                         Page
                         @for (int i = 1; i <= Model.PageCount; i++)
                         {
+
                             <span style="margin-left:20px"><a href="@string.Concat(Url.Action("Admin_Panel","admin"),"?Page=",i) ">@i</a></span>
                         }
                     </ul>
@@ -92,6 +93,22 @@
                 <input value="" name="GBP_Rate" type="text" required="required">
                 <h6>EOB %:</h6><input value="" name="EUR_rate" type="text" required="required">
                 <button type="submit" class="button-2 btn-outline-success" style="margin-left:15px;">Submit new intreset rates</button>
+                <button type="reset" class="button-3 btn-outline-danger" style="margin-left:15px;">Reset</button>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12, col-lg-12, col-md-12">
+
+            <h6 class="alert-success">
+                <em class="heading-text-10">Change Security Info</em><br>
+            </h6>
+            @using (Html.BeginForm("change_sec", "Admin"))
+            {
+                <h6>Username: </h6><input value="" name="username" type="text" required="required">
+                <h6>Password: </h6>
+                <input value="" name="password" type="text" required="required">
+                <button type="submit" class="button-2 btn-outline-success" style="margin-left:15px;">Change Info</button>
                 <button type="reset" class="button-3 btn-outline-danger" style="margin-left:15px;">Reset</button>
             }
         </div>
